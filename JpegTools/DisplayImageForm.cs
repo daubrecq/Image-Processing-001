@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using ImageProcessing;
 
 namespace JpegTools
 {
@@ -38,7 +39,7 @@ namespace JpegTools
 
         public Image LoadImage(String fileName)
         {
-            Image image = GetMultipleImage(Bitmap.FromFile(fileName));
+            Image image = Utils.GetMultipleImage(Bitmap.FromFile(fileName));
             SetImage(image);
             return _image;
         }
@@ -52,19 +53,7 @@ namespace JpegTools
         }
 
 
-        private Image GetInverse(Image image)
-        {
-            Bitmap bm = new Bitmap(image);
-            for (int x = 0; x < bm.Width; x++)
-            {
-                for (int y = 0; y < bm.Height; y++)
-                {                    
-                    Color c = bm.GetPixel(x, y);
-                    bm.SetPixel(x, y, Color.FromArgb(255 - c.R, 255 - c.G, 255 - c.B));
-                }
-            }
-            return bm;
-        }
+ 
 
         private void Flick()
         {
@@ -75,9 +64,11 @@ namespace JpegTools
         {
             
             Image i1 = _image;
-            Image i2 = GetInverse(_image);
-            Image im;
+            Image i2 = Utils.GetInverse(_image);
+            //Image i2 = _image;
+            //Image im = Utils.Add(i1, i2);
 
+            Image im;
             for (int i = 1; i <= 100; i++)
             {
                 if (i % 2 == 0)
@@ -96,12 +87,5 @@ namespace JpegTools
             t.Start();
         }
 
-        private Image GetMultipleImage(Image image)
-        {
-            int w = (image.Width / 8) * 8;
-            int h = (image.Height / 8) * 8;
-            Bitmap newIm = new Bitmap(image, new Size(w,h));
-            return newIm;
-        }       
     }
 }
