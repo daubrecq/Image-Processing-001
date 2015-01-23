@@ -44,12 +44,12 @@ namespace JpegTools
 
         private DisplayImageForm DisplayImageFromFile(String fileName)
         {
-            Image image = Image.FromFile(fileName);
+            Bitmap image = new Bitmap(Image.FromFile(fileName));
 
             DisplayImageForm display = new DisplayImageForm();
             display.Text = fileName;
             display.Left = this.Left + 100;
-            display.SetImage(image);
+            display.SetBitmap(image);
             display.Show();
             display.ShowFlicker(100);
             return display;

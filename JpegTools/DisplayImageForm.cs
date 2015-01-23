@@ -21,30 +21,30 @@ namespace JpegTools
             InitializeComponent();
         }
 
-        delegate void SetImageCallback(Image im);
-        public void SetImage(Image image)
+        delegate void SetBitmapCallback(Bitmap bm);
+        public void SetBitmap(Bitmap bitmap)
         {
             if (this.imageBox.InvokeRequired)
             {
-                SetImageCallback f = new SetImageCallback(SetImage);
-                this.Invoke(f, new object[] { image });
+                SetBitmapCallback f = new SetBitmapCallback(SetBitmap);
+                this.Invoke(f, new object[] { bitmap });
             }
             else
             {
-                _image = image;
-                this.imageBox.Image = _image;
+                _bitmap = bitmap;
+                this.imageBox.Image = _bitmap;
                 Refresh();
             }
         }
 
-        public Image LoadImage(String fileName)
+        public Bitmap LoadImage(String fileName)
         {
-            Image image = Utils.GetMultipleImage(Bitmap.FromFile(fileName));
-            SetImage(image);
-            return _image;
+            Bitmap image = Utils.GetMultipleImage(new Bitmap(Image.FromFile(fileName)));
+            SetBitmap(image);
+            return _bitmap;
         }
 
-        private Image _image;
+        private Bitmap _bitmap;
 
         private void DisplayImageForm_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -63,20 +63,20 @@ namespace JpegTools
         private void DoFlicker(int mils)
         {
             
-            Image i1 = _image;
-            Image i2 = Utils.GetInverse(_image);
+            Bitmap i1 = new Bitmap(_bitmap);
+            Bitmap i2 = Utils.GetInverse(i1);
             //Image i2 = _image;
             //Image im = Utils.Add(i1, i2);
 
-            Image im;
+            Bitmap bm;
             for (int i = 1; i <= 100; i++)
             {
                 if (i % 2 == 0)
-                    im = i1;
+                    bm = i1;
                 else
-                    im = i2;
+                    bm = i2;
 
-                SetImage(im);
+                SetBitmap(bm);
                 System.Threading.Thread.Sleep(100);
             }
         }
