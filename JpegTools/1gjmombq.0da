@@ -23,41 +23,23 @@ namespace JpegTools
             DialogResult res = openFile.ShowDialog();
             if (res == System.Windows.Forms.DialogResult.OK)
             {
-                DisplayAndAddToList(openFile.FileName);
+                 DisplayImageForm display = DisplayImageFromFile(openFile.FileName);
             }
-        }
-
-        private void DisplayAndAddToList(string fileName)
-        {
-            DisplayImageForm display = DisplayImageFromFile(fileName);
-            AddDisplayToList(display);
-
         }
         private ListViewItem AddDisplayToList(DisplayImageForm display)
         {
-            ListViewItem item = displayList.Items.Add(display.Text);
-            item.Tag = display;
-            return item;
+              ListViewItem item = displayList.Items.Add(display.Text);
+              item.Tag = display;
+              return item;
         }
-
-
-
         private DisplayImageForm DisplayImageFromFile(String fileName)
         {
-            
-
-            Image image = Image.FromFile(fileName);
-
             DisplayImageForm display = new DisplayImageForm();
+            display.LoadImage(fileName);
             display.Text = fileName;
-            display.Left = this.Left + 100;
-            display.SetImage(image);
             display.Show();
-            display.ShowFlicker(100);
             return display;
         }
-
-   
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -67,10 +49,8 @@ namespace JpegTools
         private void displayList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var s = sender as ListView;
-            ListViewItem item = s.SelectedItems[0];
-            String fileName = item.Text;
-            if (item.Tag !=  null)
-                DisplayImageFromFile(fileName);
+            s.SelectedItems[0].Tag
+         
         }
     }
 }

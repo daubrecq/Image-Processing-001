@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.displayImage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.displayImage)).BeginInit();
+            this.imageBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // displayImage
+            // imageBox
             // 
-            this.displayImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.displayImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.displayImage.Location = new System.Drawing.Point(0, 0);
-            this.displayImage.Name = "displayImage";
-            this.displayImage.Size = new System.Drawing.Size(284, 262);
-            this.displayImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.displayImage.TabIndex = 0;
-            this.displayImage.TabStop = false;
+            this.imageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imageBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imageBox.Location = new System.Drawing.Point(0, 0);
+            this.imageBox.Name = "imageBox";
+            this.imageBox.Size = new System.Drawing.Size(284, 262);
+            this.imageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imageBox.TabIndex = 0;
+            this.imageBox.TabStop = false;
             // 
             // DisplayImageForm
             // 
@@ -50,10 +50,11 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.displayImage);
+            this.Controls.Add(this.imageBox);
             this.Name = "DisplayImageForm";
             this.Text = "Display Image";
-            ((System.ComponentModel.ISupportInitialize)(this.displayImage)).EndInit();
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DisplayImageForm_KeyPress);
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -61,6 +62,6 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox displayImage;
+        private System.Windows.Forms.PictureBox imageBox;
     }
 }
