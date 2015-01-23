@@ -23,7 +23,6 @@ namespace JpegTools
         delegate void SetImageCallback(Image im);
         public void SetImage(Image image)
         {
-
             if (this.imageBox.InvokeRequired)
             {
                 SetImageCallback f = new SetImageCallback(SetImage);
@@ -35,13 +34,11 @@ namespace JpegTools
                 this.imageBox.Image = _image;
                 Refresh();
             }
-
-          
         }
 
         public Image LoadImage(String fileName)
         {
-            Image image = Bitmap.FromFile(fileName);
+            Image image = GetMultipleImage(Bitmap.FromFile(fileName));
             SetImage(image);
             return _image;
         }
@@ -61,7 +58,7 @@ namespace JpegTools
             for (int x = 0; x < bm.Width; x++)
             {
                 for (int y = 0; y < bm.Height; y++)
-                {
+                {                    
                     Color c = bm.GetPixel(x, y);
                     bm.SetPixel(x, y, Color.FromArgb(255 - c.R, 255 - c.G, 255 - c.B));
                 }
@@ -76,7 +73,7 @@ namespace JpegTools
 
         private void DoFlicker(int mils)
         {
-
+            
             Image i1 = _image;
             Image i2 = GetInverse(_image);
             Image im;
@@ -91,13 +88,20 @@ namespace JpegTools
                 SetImage(im);
                 System.Threading.Thread.Sleep(100);
             }
-           
         }
-
+        
         public void ShowFlicker(int mils)
         {
             Thread t = new Thread(new ThreadStart(Flick));
             t.Start();
-        } 
+        }
+
+        private Image GetMultipleImage(Image image)
+        {
+            int w = (image.Width / 8) * 8;
+            int h = (image.Height / 8) * 8;
+            Bitmap newIm = new Bitmap(image, new Size(w,h));
+            return newIm;
+        }       
     }
 }

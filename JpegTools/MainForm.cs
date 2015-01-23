@@ -44,8 +44,6 @@ namespace JpegTools
 
         private DisplayImageForm DisplayImageFromFile(String fileName)
         {
-            
-
             Image image = Image.FromFile(fileName);
 
             DisplayImageForm display = new DisplayImageForm();
