@@ -44,11 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmDisplayImage.cs">
+    <Compile Include="DisplayImageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDisplayImage.Designer.cs">
-      <DependentUpon>frmDisplayImage.cs</DependentUpon>
+    <Compile Include="DisplayImageForm.Designer.cs">
+      <DependentUpon>DisplayImageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -58,8 +58,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmDisplayImage.resx">
-      <DependentUpon>frmDisplayImage.cs</DependentUpon>
+    <EmbeddedResource Include="DisplayImageForm.resx">
+      <DependentUpon>DisplayImageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

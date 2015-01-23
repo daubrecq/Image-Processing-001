@@ -1,6 +1,6 @@
 ﻿namespace JpegTools
 {
-    partial class frmDisplayImage
+    partial class DisplayImageForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,36 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.displayImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.displayImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // displayImage
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(284, 262);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.displayImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.displayImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.displayImage.Location = new System.Drawing.Point(0, 0);
+            this.displayImage.Name = "displayImage";
+            this.displayImage.Size = new System.Drawing.Size(284, 262);
+            this.displayImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.displayImage.TabIndex = 0;
+            this.displayImage.TabStop = false;
             // 
-            // frmDisplayImage
+            // DisplayImageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "frmDisplayImage";
-            this.Text = "frmDisplayImage";
-            this.Load += new System.EventHandler(this.frmDisplayImage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Controls.Add(this.displayImage);
+            this.Name = "DisplayImageForm";
+            this.Text = "Display Image";
+            ((System.ComponentModel.ISupportInitialize)(this.displayImage)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox displayImage;
     }
 }

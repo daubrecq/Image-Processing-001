@@ -23,8 +23,10 @@ namespace JpegTools
             DialogResult res = openFile.ShowDialog();
             if(res == System.Windows.Forms.DialogResult.OK)
             {
-                Image im = Image.FromFile(openFile.FileName);
-                
+                DisplayImageForm display = new DisplayImageForm();
+                display.LoadImage(openFile.FileName);
+                display.Text = openFile.FileName;
+                display.Show();
             }
 
         }
